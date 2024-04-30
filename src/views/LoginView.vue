@@ -26,7 +26,7 @@ const handleSubmit = async () => {
   const result = await v$.value.$validate()
   if (result) {
     try {
-      const url = 'http://localhost:8080/oauth2/token' // Substitua pela URL da sua API de login
+      const url = 'https://api-posts-production-6d52.up.railway.app/oauth2/token' // Substitua pela URL da sua API de login
 
       const loginData = {
         grant_type: 'password',

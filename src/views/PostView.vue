@@ -14,13 +14,16 @@ const token = localStorage.getItem('authToken')
 const router = useRouter()
 
 const fetchPost = async () => {
-  const response = await fetch(`http://localhost:8080/posts/${postId.value}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
+  const response = await fetch(
+    `https://api-posts-production-6d52.up.railway.app/posts/${postId.value}`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
     }
-  })
+  )
   const data = await response.json()
   post.value = data
   getUser()
@@ -29,19 +32,22 @@ const fetchPost = async () => {
 }
 
 const getUser = async () => {
-  const response = await fetch(`http://localhost:8080/user/${post.value?.userId}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
+  const response = await fetch(
+    `https://api-posts-production-6d52.up.railway.app/user/${post.value?.userId}`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
     }
-  })
+  )
   const data = await response.json()
   user.value = data
 }
 
 const getMe = async () => {
-  const response = await fetch('http://localhost:8080/user/me', {
+  const response = await fetch('https://api-posts-production-6d52.up.railway.app/user/me', {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`
@@ -52,19 +58,22 @@ const getMe = async () => {
 }
 
 const fetchComments = async () => {
-  const response = await fetch('http://localhost:8080/comments?sort=createdAt,desc', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
+  const response = await fetch(
+    'https://api-posts-production-6d52.up.railway.app/comments?sort=createdAt,desc',
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
     }
-  })
+  )
   const data = await response.json()
   comments.value = data.content
 }
 
 const handleDelete = async (id) => {
-  const response = await fetch(`http://localhost:8080/posts/${id}`, {
+  const response = await fetch(`https://api-posts-production-6d52.up.railway.app/posts/${id}`, {
     method: 'DELETE',
     headers: {
       Authorization: `Bearer ${token}`

@@ -26,7 +26,7 @@ const handleSubmit = async () => {
   const result = await v$.value.$validate()
   if (result) {
     try {
-      const request = await fetch('http://localhost:8080/user', {
+      const request = await fetch('https://api-posts-production-6d52.up.railway.app/user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -9,19 +9,22 @@ const user = ref()
 const token = localStorage.getItem('authToken')
 
 const fetchPosts = async () => {
-  const response = await fetch('http://localhost:8080/posts?sort=createdAt,desc', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
+  const response = await fetch(
+    'https://api-posts-production-6d52.up.railway.app/posts?sort=createdAt,desc',
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
     }
-  })
+  )
   const data = await response.json()
   posts.value = data.content
 }
 
 const fetchUser = async () => {
-  const response = await fetch('http://localhost:8080/user/me', {
+  const response = await fetch('https://api-posts-production-6d52.up.railway.app/user/me', {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`

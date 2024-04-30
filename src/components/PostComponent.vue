@@ -5,7 +5,7 @@ const props = defineProps(['post', 'token', 'user', 'fetch'])
 const userPost = ref()
 
 const handleDelete = async (id) => {
-  const response = await fetch(`http://localhost:8080/posts/${id}`, {
+  const response = await fetch(`https://api-posts-production-6d52.up.railway.app/posts/${id}`, {
     method: 'DELETE',
     headers: {
       Authorization: `Bearer ${props.token}`
@@ -15,12 +15,15 @@ const handleDelete = async (id) => {
 }
 
 onMounted(async () => {
-  const request = await fetch(`http://localhost:8080/user/${props.post.userId}`, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${props.token}`
+  const request = await fetch(
+    `https://api-posts-production-6d52.up.railway.app/user/${props.post.userId}`,
+    {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${props.token}`
+      }
     }
-  })
+  )
   const data = await request.json()
   userPost.value = data
 })

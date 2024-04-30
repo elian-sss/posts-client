@@ -21,7 +21,7 @@ const handleSubmit = async () => {
   const result = await v$.value.$validate()
   if (result) {
     try {
-      const url = 'http://localhost:8080/posts' // Substitua pela URL da sua API de login
+      const url = 'https://api-posts-production-6d52.up.railway.app/posts' // Substitua pela URL da sua API de login
 
       const postData = {
         text: formData.text
